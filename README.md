@@ -107,7 +107,7 @@ while being **much cheaper** to run.
 
 ---
 
-## 5. Demo Clips (looping, four short videos)
+## 5. Demo Clips
 
 Below are four short clips recorded from our web demo.  
 Each video is muted and set to autoplay & loop when the page loads.
