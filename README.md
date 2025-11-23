@@ -112,8 +112,6 @@ while being **much cheaper** to run.
 Below are four short clips recorded from our web demo.  
 Each video is muted and set to autoplay & loop when the page loads.
 
-> ⚠️ You need to place the four `.mp4` files under `assets/`  
-> and make sure their names match the ones in `src="..."` below.
 
 <table>
   <tr>
