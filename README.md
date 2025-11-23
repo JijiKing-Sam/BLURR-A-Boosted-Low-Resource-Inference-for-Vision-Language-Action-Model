@@ -117,7 +117,7 @@ Each video is muted and set to autoplay & loop when the page loads.
   <tr>
     <td align="center">
       <b>Carrot-on-plate</b><br/>
-      <video src="assets/demo_carrot_on_plate.mp4"
+      <video src="https://github.com/user-attachments/assets/0c673e84-8ca7-4535-9ef4-27a633dc1001"
              width="260"
              autoplay
              loop
@@ -128,7 +128,7 @@ Each video is muted and set to autoplay & loop when the page loads.
     </td>
     <td align="center">
       <b>Eggplant-in-rack</b><br/>
-      <video src="assets/demo_eggplant_in_rack.mp4"
+      <video src="https://github.com/user-attachments/assets/7e02dc35-6c88-4392-9653-c17b2085b494"
              width="260"
              autoplay
              loop
@@ -141,7 +141,7 @@ Each video is muted and set to autoplay & loop when the page loads.
   <tr>
     <td align="center">
       <b>Spoon-on-cloth</b><br/>
-      <video src="assets/demo_spoon_on_cloth.mp4"
+      <video src="https://github.com/user-attachments/assets/f1419f33-8762-4491-a4e8-0e98cccc68ec"
              width="260"
              autoplay
              loop
@@ -152,7 +152,7 @@ Each video is muted and set to autoplay & loop when the page loads.
     </td>
     <td align="center">
       <b>Block-stacking</b><br/>
-      <video src="assets/demo_block_stacking.mp4"
+      <video src="https://github.com/user-attachments/assets/dc643014-fddf-4227-a43a-fdf56551f85e"
              width="260"
              autoplay
              loop
@@ -179,3 +179,5 @@ BLURR-A-Boosted-Low-Resource-Inference-for-Vision-Language-Action-Model/
     ├── demo_eggplant_in_rack.mp4
     ├── demo_spoon_on_cloth.mp4
     └── demo_block_stacking.mp4
+
+
