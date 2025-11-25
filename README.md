@@ -136,7 +136,7 @@ Note the smoother control and faster reaction times in the BLURR column.
 </tr>
 <tr>
 <td>
-<video src="demo/demo_carrot_on_plate_base.mp4" width="100%" autoplay loop muted playsinline></video>
+<video src="[demo/demo_carrot_on_plate_base.mp4](https://github.com/user-attachments/assets/82b17c6c-2520-4f85-b126-a5e23c8a7d3a)" width="100%" autoplay loop muted playsinline></video>
 </td>
 <td>
 <video src="demo/demo_carrot_on_plate.mp4" width="100%" autoplay loop muted playsinline></video>
@@ -200,5 +200,9 @@ BLURR-A-Boosted-Low-Resource-Inference-for-Vision-Language-Action-Model/
     ├── demo_carrot_on_plate_base.mp4
     ├── demo_carrot_on_plate.mp4
     └── ... (other clips)
+
+
+
+
 
 
