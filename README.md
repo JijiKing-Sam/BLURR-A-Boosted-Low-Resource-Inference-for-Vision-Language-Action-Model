@@ -111,62 +111,82 @@ while being **much cheaper** to run.
 
 ---
 
-## 5. Demo Clips
+5. Demo Clips
 
-Below are four short clips recorded from our web demo.  
-Each video is muted and set to autoplay & loop when the page loads.
-
+Below are side-by-side comparisons recorded from our web demo.
+Left: Baseline Interleave-Pi-0 (~6Hz). Right: BLURR-Pi-0 (>50Hz).
+Note the smoother control and faster reaction times in the BLURR column.
 
 <table>
-  <tr>
-    <td align="center">
-      <b>Carrot-on-plate</b><br/>
-      <video src="https://github.com/user-attachments/assets/0c673e84-8ca7-4535-9ef4-27a633dc1001"
-             width="260"
-             autoplay
-             loop
-             muted
-             playsinline
-             controls>
-      </video>
-    </td>
-    <td align="center">
-      <b>Eggplant-in-rack</b><br/>
-      <video src="https://github.com/user-attachments/assets/7e02dc35-6c88-4392-9653-c17b2085b494"
-             width="260"
-             autoplay
-             loop
-             muted
-             playsinline
-             controls>
-      </video>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <b>Spoon-on-cloth</b><br/>
-      <video src="https://github.com/user-attachments/assets/f1419f33-8762-4491-a4e8-0e98cccc68ec"
-             width="260"
-             autoplay
-             loop
-             muted
-             playsinline
-             controls>
-      </video>
-    </td>
-    <td align="center">
-      <b>Block-stacking</b><br/>
-      <video src="https://github.com/user-attachments/assets/dc643014-fddf-4227-a43a-fdf56551f85e"
-             width="260"
-             autoplay
-             loop
-             muted
-             playsinline
-             controls>
-      </video>
-    </td>
-  </tr>
+<tr>
+<th width="50%">Baseline (Interleave-Pi-0)
+
+<sub>High Latency (~162ms)</sub></th>
+
+<th width="50%">BLURR (Ours)
+
+<sub>Low Latency (~17ms)</sub></th>
+
+</tr>
+
+<!-- Task 1: Carrot -->
+
+<tr>
+<td colspan="2" align="center"><b>1. Carrot on Plate</b></td>
+</tr>
+<tr>
+<td>
+<video src="demo/demo_carrot_on_plate_base.mp4" width="100%" autoplay loop muted playsinline></video>
+</td>
+<td>
+<video src="demo/demo_carrot_on_plate.mp4" width="100%" autoplay loop muted playsinline></video>
+</td>
+</tr>
+
+<!-- Task 2: Spoon -->
+
+<tr>
+<td colspan="2" align="center"><b>2. Spoon on Cloth</b></td>
+</tr>
+<tr>
+<td>
+<video src="demo/demo_spoon_on_cloth_base.mp4" width="100%" autoplay loop muted playsinline></video>
+</td>
+<td>
+<video src="demo/demo_spoon_on_cloth.mp4" width="100%" autoplay loop muted playsinline></video>
+</td>
+</tr>
+
+<!-- Task 3: Eggplant -->
+
+<tr>
+<td colspan="2" align="center"><b>3. Eggplant in Rack</b></td>
+</tr>
+<tr>
+<td>
+<video src="demo/demo_eggplant_in_rack_base.mp4" width="100%" autoplay loop muted playsinline></video>
+</td>
+<td>
+<video src="demo/demo_eggplant_in_rack.mp4" width="100%" autoplay loop muted playsinline></video>
+</td>
+</tr>
+
+<!-- Task 4: Blocks -->
+
+<tr>
+<td colspan="2" align="center"><b>4. Block Stacking</b></td>
+</tr>
+<tr>
+<td>
+<video src="demo/demo_block_stacking_base.mp4" width="100%" autoplay loop muted playsinline></video>
+</td>
+<td>
+<video src="demo/demo_block_stacking.mp4" width="100%" autoplay loop muted playsinline></video>
+</td>
+</tr>
 </table>
+
+Note: If videos do not autoplay, please click to play or view the interactive demo page for the best experience.
 
 ---
 
