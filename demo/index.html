@@ -1,0 +1,248 @@
+import React, { useState, useEffect } from 'react';
+import { PlayCircle, Zap, FastForward, Cpu, Activity, Target, FileText, Github } from 'lucide-react';
+
+const ComparisonRow = ({ taskName, baseVideo, blurrVideo, description }: { taskName: string, baseVideo: string, blurrVideo: string, description: string }) => {
+    return (
+        <div className="mb-16 border-b border-slate-200 pb-12 last:border-0">
+            <h3 className="text-2xl font-bold text-slate-800 mb-2 flex items-center gap-2">
+                <PlayCircle className="text-blue-600" size={24}/> {taskName}
+            </h3>
+            <p className="text-slate-600 mb-6">{description}</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Baseline Column */}
+                <div className="flex flex-col">
+                    <div className="relative bg-black rounded-lg overflow-hidden shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 transition-transform aspect-video border-4 border-slate-200">
+                        <div className="absolute top-2 left-2 bg-slate-800/80 text-white text-xs px-2 py-1 rounded backdrop-blur-sm z-10 font-mono">
+                            Baseline (Interleave-Pi-0)
+                        </div>
+                        <video 
+                            className="w-full h-full object-cover"
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline
+                            src={baseVideo}
+                        />
+                    </div>
+                    
+                    {/* Baseline Metrics */}
+                    <div className="mt-4 bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                        <div className="grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <div className="text-xs text-slate-500 uppercase tracking-wider">Inference Latency</div>
+                                <div className="text-xl font-bold text-red-600">162.1 ms</div>
+                            </div>
+                            <div>
+                                <div className="text-xs text-slate-500 uppercase tracking-wider">Control Freq</div>
+                                <div className="text-xl font-bold text-slate-700">~6 Hz</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* BLURR Column */}
+                <div className="flex flex-col">
+                    <div className="relative bg-black rounded-lg overflow-hidden shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 transition-transform aspect-video border-4 border-blue-500 shadow-blue-200">
+                        <div className="absolute top-2 left-2 bg-blue-600/90 text-white text-xs px-2 py-1 rounded backdrop-blur-sm z-10 font-bold font-mono flex items-center gap-1">
+                            <Zap size={12}/> BLURR (Ours)
+                        </div>
+                        <video 
+                            className="w-full h-full object-cover"
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline
+                            src={blurrVideo}
+                        />
+                    </div>
+
+                    {/* BLURR Metrics */}
+                    <div className="mt-4 bg-blue-50 p-4 rounded-lg border border-blue-100 shadow-sm">
+                        <div className="grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <div className="text-xs text-blue-600 uppercase tracking-wider">Inference Latency</div>
+                                <div className="text-xl font-bold text-green-600">17.1 ms</div>
+                            </div>
+                            <div>
+                                <div className="text-xs text-blue-600 uppercase tracking-wider">Control Freq</div>
+                                <div className="text-xl font-bold text-slate-700">~60 Hz</div>
+                            </div>
+                        </div>
+                        <div className="mt-2 text-center">
+                            <span className="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full font-medium">
+                                9.5x Speedup
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const MetricCard = ({ title, value, subtext, trend, icon: Icon }: { title: string, value: string, subtext: string, trend: string, icon: any }) => (
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+        <div className="p-3 bg-blue-50 rounded-full text-blue-600 mb-3">
+            <Icon size={24} />
+        </div>
+        <h4 className="text-sm font-medium text-slate-500 uppercase tracking-wide mb-1">{title}</h4>
+        <div className="text-3xl font-bold text-slate-900 mb-1">{value}</div>
+        <div className={`text-sm ${trend === 'positive' ? 'text-green-600' : 'text-slate-500'}`}>
+            {subtext}
+        </div>
+    </div>
+);
+
+export default function App() {
+    const tasks = [
+        {
+            id: 'carrot',
+            name: 'Carrot on Plate',
+            desc: 'Pick up the carrot and place it accurately on the plate.',
+            base: 'demo_carrot_on_plate_base.mp4',
+            blurr: 'demo_carrot_on_plate.mp4'
+        },
+        {
+            id: 'spoon',
+            name: 'Spoon on Cloth',
+            desc: 'Retrieve the spoon and align it on the blue cloth.',
+            base: 'demo_spoon_on_cloth_base.mp4',
+            blurr: 'demo_spoon_on_cloth.mp4'
+        },
+        {
+            id: 'eggplant',
+            name: 'Eggplant in Rack',
+            desc: 'Place the eggplant into the specific drying rack slot.',
+            base: 'demo_eggplant_in_rack_base.mp4',
+            blurr: 'demo_eggplant_in_rack.mp4'
+        },
+        {
+            id: 'stack',
+            name: 'Block Stacking',
+            desc: 'Precision stacking of a cube onto another cube.',
+            base: 'demo_block_stacking_base.mp4',
+            blurr: 'demo_block_stacking.mp4'
+        }
+    ];
+
+    return (
+        <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
+            {/* Header */}
+            <header className="bg-white border-b border-slate-200 pt-16 pb-12 px-4">
+                <div className="max-w-5xl mx-auto text-center">
+                    <div className="inline-block mb-4 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
+                        WWW 2026 Demo Track
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">BLURR</span>: Boosted Low-Resource Inference for Vision-Language-Action Models
+                    </h1>
+                    <div className="flex flex-wrap justify-center gap-4 text-slate-600 mb-8">
+                        <span>Xiaoyu Ma*</span>
+                        <span>Zhengqing Yuan*</span>
+                        <span>Zheyuan Zhang</span>
+                        <span>Kaiwen Shi</span>
+                        <span>Lichao Sun</span>
+                        <span>Yanfang Ye</span>
+                    </div>
+                    <div className="flex justify-center gap-4">
+                        <a href="#" className="flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-slate-800 transition-colors">
+                            <FileText size={18} /> Read Paper
+                        </a>
+                        <a href="#" className="flex items-center gap-2 bg-white border border-slate-300 text-slate-700 px-5 py-2.5 rounded-lg font-medium hover:bg-slate-50 transition-colors">
+                            <Github size={18} /> View Code
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            {/* Stats Overview */}
+            <section className="bg-slate-50 py-12 px-4 border-b border-slate-200">
+                <div className="max-w-5xl mx-auto">
+                    <h2 className="text-xl font-bold text-slate-800 mb-6 text-center">Performance Highlights</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <MetricCard 
+                            title="Latency Speedup" 
+                            value="9.5x" 
+                            subtext="162ms → 17ms" 
+                            trend="positive"
+                            icon={FastForward}
+                        />
+                        <MetricCard 
+                            title="Peak VRAM" 
+                            value="-47%" 
+                            subtext="13.6GB → 7.2GB" 
+                            trend="positive"
+                            icon={Cpu}
+                        />
+                        <MetricCard 
+                            title="Effective GFLOPS" 
+                            value="9.2x" 
+                            subtext="Compute efficiency" 
+                            trend="positive"
+                            icon={Activity}
+                        />
+                        <MetricCard 
+                            title="Success Rate" 
+                            value="~71%" 
+                            subtext="Maintains accuracy" 
+                            trend="neutral"
+                            icon={Target}
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* Main Demo Section */}
+            <main className="flex-grow py-16 px-4">
+                <div className="max-w-5xl mx-auto">
+                    <div className="flex items-center justify-between mb-8">
+                        <h2 className="text-3xl font-bold text-slate-900">Interactive Demo</h2>
+                        <div className="text-sm text-slate-500 bg-white border px-3 py-1 rounded-md shadow-sm">
+                            <span className="w-2 h-2 inline-block rounded-full bg-green-500 mr-2"></span>
+                            SimplerEnv Tasks
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-8">
+                        <p className="text-slate-600 mb-8 max-w-3xl">
+                            Below are comparisons between the baseline <strong>Interleave-Pi-0</strong> and our proposed <strong>BLURR</strong> method. 
+                            While the baseline struggles with high latency (~6Hz control), BLURR achieves real-time responsiveness ({'>'}50Hz) without sacrificing task success rates.
+                        </p>
+
+                        {tasks.map((task) => (
+                            <ComparisonRow 
+                                key={task.id}
+                                taskName={task.name}
+                                description={task.desc}
+                                baseVideo={task.base}
+                                blurrVideo={task.blurr}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </main>
+
+            {/* Technical Details / Abstract */}
+            <section className="bg-white border-t border-slate-200 py-16 px-4">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold text-slate-900 mb-6">Abstract</h2>
+                    <p className="text-lg text-slate-700 leading-relaxed mb-6">
+                        Vision-Language-Action (VLA) models enable impressive zero-shot manipulation, but their inference stacks are often too heavy for responsive web demos or high-frequency robot control on commodity GPUs. We present BLURR, a lightweight inference wrapper that plugs into existing VLA controllers without retraining.
+                    </p>
+                    <p className="text-lg text-slate-700 leading-relaxed">
+                        Instantiated on Pi-0, BLURR keeps the original checkpoints and observation interfaces, and accelerates control by combining an instruction-prefix KV cache, mixed-precision execution, and a single-step rollout schedule. Our demo showcases real-time toggling of inference options while watching SimplerEnv episodes.
+                    </p>
+                </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="bg-slate-900 text-slate-400 py-12 px-4 text-center">
+                <div className="max-w-5xl mx-auto">
+                    <p>© 2026 WWW Demo Track Submission. All rights reserved.</p>
+                    <p className="text-sm mt-2">SimplerEnv visualization clips.</p>
+                </div>
+            </footer>
+        </div>
+    );
+}
