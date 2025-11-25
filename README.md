@@ -195,13 +195,10 @@ Note: If videos do not autoplay, please click to play or view the interactive de
 ```text
 BLURR-A-Boosted-Low-Resource-Inference-for-Vision-Language-Action-Model/
 ├── README.md
-├── blurr/              # BLURR wrapper implementation
-├── configs/            # controller & environment configs
-├── scripts/            # launch scripts for the web demo / evaluation
-└── assets/
+├── demo/               # Web demo source code & assets
+    ├── index.html
+    ├── demo_carrot_on_plate_base.mp4
     ├── demo_carrot_on_plate.mp4
-    ├── demo_eggplant_in_rack.mp4
-    ├── demo_spoon_on_cloth.mp4
-    └── demo_block_stacking.mp4
+    └── ... (other clips)
 
 
