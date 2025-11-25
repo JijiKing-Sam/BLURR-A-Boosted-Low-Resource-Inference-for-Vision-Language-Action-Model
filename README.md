@@ -1,5 +1,9 @@
 # BLURR: A Boosted Low-Resource Inference for Vision-Language-Action Model
 
+🚀 Interactive Demo Available! > Watch real-time comparisons and detailed visualization comparisons on our web demo:
+
+👉 [https://jijiking-sam.github.io/BLURR.../demo/](https://jijiking-sam.github.io/BLURR-A-Boosted-Low-Resource-Inference-for-Vision-Language-Action-Model/demo/)
+
 An open-source demo for VLA inference acceleration.
 
 BLURR is a lightweight inference wrapper for Vision–Language–Action (VLA) controllers such as Pi-0 and OpenVLA.  
