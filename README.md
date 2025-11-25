@@ -111,7 +111,7 @@ while being **much cheaper** to run.
 
 ---
 
-5. Demo Clips
+## 5. Demo Clips
 
 Below are side-by-side comparisons recorded from our web demo.
 Left: Baseline Interleave-Pi-0 (~6Hz). Right: BLURR-Pi-0 (>50Hz).
@@ -190,7 +190,7 @@ Note: If videos do not autoplay, please click to play or view the interactive de
 
 ---
 
-## 6. Project Structure (minimal)
+## 6. Project Structure
 
 ```text
 BLURR-A-Boosted-Low-Resource-Inference-for-Vision-Language-Action-Model/
