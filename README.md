@@ -200,37 +200,4 @@ BLURR-A-Boosted-Low-Resource-Inference-for-Vision-Language-Action-Model/
     ├── demo_carrot_on_plate_base.mp4
     ├── demo_carrot_on_plate.mp4
     └── ... (other clips)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
