@@ -139,7 +139,7 @@ Note the smoother control and faster reaction times in the BLURR column.
 <video src="https://github.com/user-attachments/assets/82b17c6c-2520-4f85-b126-a5e23c8a7d3a" width="100%" autoplay loop muted playsinline></video>
 </td>
 <td>
-<video src="demo/demo_carrot_on_plate.mp4" width="100%" autoplay loop muted playsinline></video>
+<video src="https://github.com/user-attachments/assets/9013b868-d8c0-4a6b-a57b-eea829289a1e" width="100%" autoplay loop muted playsinline></video>
 </td>
 </tr>
 
@@ -150,10 +150,10 @@ Note the smoother control and faster reaction times in the BLURR column.
 </tr>
 <tr>
 <td>
-<video src="demo/demo_spoon_on_cloth_base.mp4" width="100%" autoplay loop muted playsinline></video>
+<video src="https://github.com/user-attachments/assets/85a1cc95-71a7-4aef-82e2-95004c905e5a" width="100%" autoplay loop muted playsinline></video>
 </td>
 <td>
-<video src="demo/demo_spoon_on_cloth.mp4" width="100%" autoplay loop muted playsinline></video>
+<video src="https://github.com/user-attachments/assets/c8c5564a-79e6-42c2-a1dc-0de715956834" width="100%" autoplay loop muted playsinline></video>
 </td>
 </tr>
 
@@ -164,10 +164,10 @@ Note the smoother control and faster reaction times in the BLURR column.
 </tr>
 <tr>
 <td>
-<video src="demo/demo_eggplant_in_rack_base.mp4" width="100%" autoplay loop muted playsinline></video>
+<video src="https://github.com/user-attachments/assets/ee19ee2e-7df7-4092-9f1d-c4009343cf33" width="100%" autoplay loop muted playsinline></video>
 </td>
 <td>
-<video src="demo/demo_eggplant_in_rack.mp4" width="100%" autoplay loop muted playsinline></video>
+<video src="https://github.com/user-attachments/assets/2ecea4b1-ceb4-4f1d-b9b2-d8ffe10eebf1" width="100%" autoplay loop muted playsinline></video>
 </td>
 </tr>
 
@@ -178,10 +178,10 @@ Note the smoother control and faster reaction times in the BLURR column.
 </tr>
 <tr>
 <td>
-<video src="demo/demo_block_stacking_base.mp4" width="100%" autoplay loop muted playsinline></video>
+<video src="https://github.com/user-attachments/assets/21cc8391-3758-4ba2-807e-477435832847" width="100%" autoplay loop muted playsinline></video>
 </td>
 <td>
-<video src="demo/demo_block_stacking.mp4" width="100%" autoplay loop muted playsinline></video>
+<video src="https://github.com/user-attachments/assets/3d2275dc-5a89-40c1-a5d6-9aa6e9a75ba2" width="100%" autoplay loop muted playsinline></video>
 </td>
 </tr>
 </table>
@@ -200,6 +200,34 @@ BLURR-A-Boosted-Low-Resource-Inference-for-Vision-Language-Action-Model/
     ├── demo_carrot_on_plate_base.mp4
     ├── demo_carrot_on_plate.mp4
     └── ... (other clips)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
