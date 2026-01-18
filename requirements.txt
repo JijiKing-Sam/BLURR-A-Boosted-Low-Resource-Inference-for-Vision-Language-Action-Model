@@ -1,0 +1,20 @@
+# Minimal runtime deps for BLURR scripts.
+#
+# Notes:
+# - Install PyTorch separately to match your CUDA version (see pytorch.org).
+# - SimplerEnv is not pinned here; follow README to install from its repo.
+
+hydra-core
+omegaconf
+numpy
+pillow
+transformers
+
+# Optional (SimplerEnv eval / video)
+imageio
+imageio-ffmpeg
+opencv-python
+
+# Optional (HF VLA benchmark)
+huggingface_hub
+

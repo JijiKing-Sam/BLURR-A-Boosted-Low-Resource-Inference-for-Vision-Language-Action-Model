@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Outputs / caches
+runs/
+log/
+logs/
+outputs/
+checkpoints/
+*.log
+
+# Large model artifacts (do not commit)
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# HuggingFace / torch caches (do not commit)
+hf_cache/
+torchinductor_cache/
+

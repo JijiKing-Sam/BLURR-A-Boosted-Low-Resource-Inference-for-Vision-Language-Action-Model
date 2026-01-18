@@ -17,6 +17,68 @@ This repository provides the demo code and short video clips used in our WWW 202
 
 ---
 
+## 0. Reproducibility (Code)
+
+This repository now includes runnable code to reproduce the BLURR inference stack and basic evaluations:
+
+- Pi0 + SimplerEnv evaluation runner: `scripts/eval_pi0_simpler.py`
+- Pi0 latency/VRAM/GFLOPS benchmark: `scripts/benchmark_pi0.py`
+- HuggingFace VLA benchmark (e.g., OpenVLA): `scripts/benchmark_hf_vla.py`
+- Bridge batch runner + result collector: `scripts/run_bridge_full_eval.sh`, `scripts/collect_bridge_eval_results.py`
+
+We vendor a minimal subset of the open-pi-zero implementation under `third_party/open_pi_zero/` (MIT license).
+The demo webpage is fully self-contained in `demo/index.html` (no build step).
+
+### 0.1 Install
+
+```bash
+pip install -r requirements.txt
+```
+
+For SimplerEnv evaluation, also install SimplerEnv (and ManiSkill2_real2sim) from its repo and ensure the assets are available (see SimplerEnv docs).
+
+### 0.2 Run Pi0 + SimplerEnv (single task)
+
+```bash
+python scripts/eval_pi0_simpler.py \
+  --preset blurr \
+  --config config/eval/bridge.yaml \
+  --task widowx_carrot_on_plate \
+  --checkpoint /path/to/bridge_beta_step19296_*.pt \
+  --n-eval-episode 10
+```
+
+Logs go to `runs/eval_bridge/.../run.log`.
+
+### 0.3 Run Bridge batch evaluation (4 tasks, baseline vs BLURR)
+
+```bash
+bash scripts/run_bridge_full_eval.sh /path/to/bridge_beta_step19296_*.pt
+python scripts/collect_bridge_eval_results.py
+```
+
+### 0.4 Run benchmarks
+
+Pi0 local checkpoint benchmark:
+
+```bash
+python scripts/benchmark_pi0.py \
+  --config config/eval/bridge.yaml \
+  --checkpoint /path/to/bridge_beta_step19296_*.pt \
+  --use-bf16 --use-torch-compile \
+  --warmup 5 --iters 50
+```
+
+HuggingFace VLA benchmark (example):
+
+```bash
+python scripts/benchmark_hf_vla.py \
+  --model-id openvla/openvla-7b \
+  --use-bf16 --use-torch-compile
+```
+
+---
+
 ## 1. Demo Clips
 
 Below are side-by-side comparisons recorded from our web demo.

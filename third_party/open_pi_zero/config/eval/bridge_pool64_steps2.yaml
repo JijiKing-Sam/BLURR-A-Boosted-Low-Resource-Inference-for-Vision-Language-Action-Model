@@ -1,0 +1,46 @@
+defaults:
+  - bridge
+  - _self_
+
+# Name and logging
+name: bridge_pool64_s2
+log_dir: ${oc.env:VLA_LOG_DIR}/eval_bridge/${name}_ta${act_steps}_${seed}/${env.task}_${now:%H-%M-%S}
+
+# Runtime
+use_bf16: True
+use_torch_compile: True
+
+# Inference settings
+flow_sampling: beta
+num_inference_steps: 2
+final_action_clip_value: 1.0
+
+# Quantization (fast path used in speed benchmarks)
+action_quantization:
+  mode: int8
+  activation_clip: 1.0
+  cache_fp_weight: true
+  fp_dtype: bfloat16
+kv_quantization:
+  mode: int8
+  activation_clip: 1.0
+  dtype: bfloat16
+
+# Closed-loop execution
+act_steps: 1
+
+# Vision token pooling (pool64)
+env:
+  adapter:
+    num_image_tokens: 64
+    image_size: [112, 112]
+    max_seq_len: 276
+
+vision:
+  config:
+    image_size: 112
+    patch_size: 14
+    num_image_tokens: 64
+
+# Checkpoint (override via CLI / env; keep empty by default for open-source release)
+checkpoint_path:
