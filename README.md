@@ -15,7 +15,7 @@ It **keeps the original checkpoints and APIs unchanged**, and accelerates contro
 
 This repository provides the demo code and short video clips used in our WWW 2026 demo submission.
 
-01.12 Paper has been accepted as a demo paper at the theWebConf2026 conference.
+2026.01.12 Paper has been accepted as a demo paper at the theWebConf2026 conference.
 
 ---
 
