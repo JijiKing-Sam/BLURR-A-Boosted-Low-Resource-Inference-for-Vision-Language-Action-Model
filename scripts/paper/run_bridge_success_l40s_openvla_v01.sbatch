@@ -16,7 +16,7 @@
 #SBATCH --qos=gpuinteract
 #SBATCH --gres=gpu:l40s-48:1
 #SBATCH --cpus-per-task=5
-#SBATCH --time=03:00:00
+#SBATCH --time=08:00:00
 #SBATCH --export=ALL
 #SBATCH --output=%x_%j.out
 #SBATCH --error=%x_%j.err
@@ -100,4 +100,3 @@ python -u scripts/eval_hf_vla_simpler.py \
   "${EXTRA_ARGS[@]}"
 
 echo "All Bridge OpenVLA v0.1 runs finished. Summaries in: ${OUT_ROOT}"
-
