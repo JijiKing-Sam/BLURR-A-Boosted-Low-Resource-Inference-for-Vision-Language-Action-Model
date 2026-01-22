@@ -36,7 +36,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--image",
         type=str,
-        default="media/maniskill_pp.png",
+        default="third_party/open_pi_zero/media/maniskill_pp.png",
         help="Path to an RGB image used as visual context.",
     )
     parser.add_argument(

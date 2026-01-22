@@ -26,7 +26,9 @@ This repository now includes runnable code to reproduce the BLURR inference stac
 - Pi0 + SimplerEnv evaluation runner: `scripts/eval_pi0_simpler.py`
 - Pi0 latency/VRAM/GFLOPS benchmark: `scripts/benchmark_pi0.py`
 - HuggingFace VLA benchmark (e.g., OpenVLA): `scripts/benchmark_hf_vla.py`
+- HuggingFace VLA + SimplerEnv Bridge evaluation (e.g., OpenVLA): `scripts/eval_hf_vla_simpler.py`
 - Bridge batch runner + result collector: `scripts/run_bridge_full_eval.sh`, `scripts/collect_bridge_eval_results.py`
+- Paper-facing batch scripts / plot generator: `scripts/paper/`
 
 We vendor a minimal subset of the open-pi-zero implementation under `third_party/open_pi_zero/` (MIT license).
 The demo webpage is fully self-contained in `demo/index.html` (no build step).
@@ -52,14 +54,25 @@ python scripts/eval_pi0_simpler.py \
 
 Logs go to `runs/eval_bridge/.../run.log`.
 
-### 0.3 Run Bridge batch evaluation (4 tasks, baseline vs BLURR)
+### 0.3 Run HuggingFace OpenVLA on SimplerEnv (4 Bridge tasks)
+
+```bash
+python scripts/eval_hf_vla_simpler.py \
+  --model-id openvla/openvla-7b \
+  --preset blurr \
+  --task widowx_carrot_on_plate widowx_spoon_on_towel widowx_stack_cube widowx_put_eggplant_in_basket \
+  --seed 42 \
+  --n-eval-episode 10
+```
+
+### 0.4 Run Bridge batch evaluation (4 tasks, baseline vs BLURR)
 
 ```bash
 bash scripts/run_bridge_full_eval.sh /path/to/bridge_beta_step19296_*.pt
 python scripts/collect_bridge_eval_results.py
 ```
 
-### 0.4 Run benchmarks
+### 0.5 Run benchmarks
 
 Pi0 local checkpoint benchmark:
 
@@ -207,6 +220,7 @@ BLURR keeps all model weights unchanged and only modifies the inference stack.
 ### 3.1 Single-step efficiency (H100, 224×224 RGB, 256 tokens)
 
 This table corresponds to Table 1 in the paper.
+(OpenVLA = `openvla/openvla-7b`, OpenVLA-OFT = `Kaipengm2/openvla-oft-64-130000`.)
 
 | Configuration        | Latency (ms) | VRAM (GB) | GFLOPS  |
 | -------------------- | -----------: | --------: | ------: |
