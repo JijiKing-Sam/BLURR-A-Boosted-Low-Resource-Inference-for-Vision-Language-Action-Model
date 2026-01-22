@@ -286,7 +286,7 @@
                                 Vision-Language-Action (VLA) models enable impressive zero-shot manipulation, but their inference stacks are often too heavy for responsive web demos or high-frequency robot control on commodity GPUs. We present BLURR, a lightweight inference wrapper that plugs into existing VLA controllers without retraining.
                             </p>
                             <p className="text-lg text-slate-700 leading-relaxed">
-                                Instantiated on Pi-0, BLURR keeps the original checkpoints and observation interfaces, and accelerates control by combining an instruction-prefix KV cache, mixed-precision execution, and a single-step rollout schedule. Our demo showcases real-time toggling of inference options while watching SimplerEnv episodes.
+                                Instantiated on Pi-0, BLURR keeps the original checkpoints and observation interfaces, and accelerates control by combining a prefix KV cache, mixed-precision execution, and a single-step rollout schedule. Our demo presents side-by-side SimplerEnv episodes and highlights latency/VRAM/success trade-offs.
                             </p>
                         </div>
                     </section>

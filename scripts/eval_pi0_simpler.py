@@ -10,6 +10,10 @@ from pathlib import Path
 
 from omegaconf import OmegaConf, open_dict
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 from blurr.imports import ensure_open_pi_zero_on_path
 from blurr.paths import open_pi_zero_root, repo_root
 

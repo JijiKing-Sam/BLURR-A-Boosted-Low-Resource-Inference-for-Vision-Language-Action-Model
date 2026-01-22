@@ -33,7 +33,26 @@ class EvalAgent:
 
         # model
         self.device = torch.device(f"cuda:{cfg.gpu_id}")
-        self.dtype = torch.bfloat16 if cfg.get("use_bf16", False) else torch.float32
+        use_bf16 = bool(cfg.get("use_bf16", False))
+        use_fp16 = bool(cfg.get("use_fp16", False))
+        if use_bf16 and use_fp16:
+            raise ValueError("Specify at most one of `use_bf16` or `use_fp16`.")
+        if use_fp16:
+            self.dtype = torch.float16
+        elif use_bf16:
+            try:
+                is_supported = getattr(torch.cuda, "is_bf16_supported", lambda: False)()
+            except Exception:
+                is_supported = False
+            if not is_supported:
+                log.warning(
+                    "BF16 requested but not supported on this GPU; falling back to FP16."
+                )
+                self.dtype = torch.float16
+            else:
+                self.dtype = torch.bfloat16
+        else:
+            self.dtype = torch.float32
         # global backend toggles for speed on H100
         try:
             torch.backends.cuda.enable_flash_sdp(True)

@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import sys
 import time
 from pathlib import Path
 
@@ -15,6 +16,10 @@ import torch
 from omegaconf import OmegaConf
 from PIL import Image
 from transformers import AutoTokenizer
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from blurr.imports import ensure_open_pi_zero_on_path
 from blurr.paths import open_pi_zero_root
